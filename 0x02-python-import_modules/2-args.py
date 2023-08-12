@@ -7,7 +7,7 @@ if __name__ == '__main__':
         print("{} arguments.".format(count-1))
     elif count == 2:
         count = count - 1
-        print("{} argument.".format(count))
+        print("{} argument:".format(count))
         print("{}: {}".format(count, sys.argv[count]))
     elif count > 2:
         print("{} arguments:".format(count-1))
