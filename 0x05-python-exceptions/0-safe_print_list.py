@@ -8,3 +8,4 @@
                 i++;
         finally:
             print("")
+            return i;
