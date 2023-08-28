@@ -8,7 +8,7 @@ def safe_print_integer_err(value):
     try:
         print("{:d}".format(value))
         flag = True
-    except (TypeError as te):
+    except (TypeError) as te:
         flag = False
         stderr.write("exception: {}\n".format(te))
     return flag
