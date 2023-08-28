@@ -2,7 +2,7 @@
 
 
 def safe_print_list(my_list=[], x=0):
-    int i = 0
+    i = 0
     while i < x:
         try:
             print(mylist[i], end='')
