@@ -2,7 +2,7 @@
 """
 This is a module that creates a Square class with initialization of Square size
 for Python Classes.
-This is task 1 
+This is task 1
 """
 
 
