@@ -1,0 +1,33 @@
+testing of module: matrix_divided
+===================================================
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+
+test case: matrix must be list of list of int/floats
+----------------------------------------------------
+>>> matrix_divided([[1, 'a'], ['b', 3]], 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+test case: each row must be of the same length
+----------------------------------------------------
+>>> matrix_divided([[1, 2], [1, 2, 3]], 3)
+Traceback (most recent call last):
+TypeError: each row of the matrix must have the same size
+
+test case: div must be of type integer or float
+----------------------------------------------------
+>>> matrix_divided(matrix, '3')
+Traceback (most recent call last):
+TypeError: div must be a number
+
+test case: div can't be zero(0)
+----------------------------------------------------
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+test case: all result element must be rounded to 2dp
+----------------------------------------------------
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]

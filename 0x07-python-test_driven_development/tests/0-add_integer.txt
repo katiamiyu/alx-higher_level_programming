@@ -1,0 +1,33 @@
+testing the add_integer module, 0-add_integer
+=============================================
+
+test case: when a, b are either int or float
+--------------------------------------------
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(1, b=2)
+3
+>>> add_integer(90, b=8)
+98
+>>> add_integer(2, b=3.2)
+5
+>>> add_integer(100.3, b=5)
+105
+
+test case: when a, b are negative values
+-------------------------------------------
+>>> add_integer(-2, -3)
+-5
+>>> add_integer(-0.5, b=-0.3)
+0
+>>> add_integer(-3)
+95
+
+test case: when a, b are not int or float
+---------------------------------------------
+>>> add_integer('a', 7)
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(7, 'b')
+Traceback (most recent call last):
+TypeError: b must be an integer
+
