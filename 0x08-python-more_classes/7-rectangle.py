@@ -5,7 +5,13 @@
 class Rectangle:
     """
     creates a Rectangle object
+    public instance attribute
+    number_of_instances
+    print_symbol
     """
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """ init new instance
             Args:
@@ -14,6 +20,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -80,9 +87,12 @@ class Rectangle:
         rec_str = ""
         if self.width == 0 or self.height == 0:
             return rec_str
-        rec = "#" * self.width + "\n"
+        rec = str(self.print_symbol) * self.width + "\n"
         for i in range(self.height):
-            rec_str += rec
+            if i == self.height - 1:
+                rec_str += str(self.print_symbol) * self.width
+            else:
+                rec_str += rec
         return rec_str
 
     def __repr__(self):
@@ -91,3 +101,8 @@ class Rectangle:
             of rectangle
         """
         return (f"Rectangle({self.width}, {self.height})")
+
+    def __del__(self):
+        """ print delete instance of rectangle
+        """
+        print("Bye rectangle...")

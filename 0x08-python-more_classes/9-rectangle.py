@@ -5,7 +5,13 @@
 class Rectangle:
     """
     creates a Rectangle object
+    public instance attribute
+    number_of_instances
+    print_symbol
     """
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """ init new instance
             Args:
@@ -14,6 +20,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -80,9 +87,12 @@ class Rectangle:
         rec_str = ""
         if self.width == 0 or self.height == 0:
             return rec_str
-        rec = "#" * self.width + "\n"
+        rec = str(self.print_symbol) * self.width + "\n"
         for i in range(self.height):
-            rec_str += rec
+            if i == self.height - 1:
+                rec_str += str(self.print_symbol) * self.width
+            else:
+                rec_str += rec
         return rec_str
 
     def __repr__(self):
@@ -91,3 +101,37 @@ class Rectangle:
             of rectangle
         """
         return (f"Rectangle({self.width}, {self.height})")
+
+    def __del__(self):
+        """ print delete instance of rectangle
+        """
+        print("Bye rectangle...")
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """ gets the bigger of two rectangle instances
+            Args:
+                rect_1 (Rectangle) first rectangle
+                rect_2 (Rectangle) second rectangle
+            Return:
+                bigger rectangle
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() == rect_2.area():
+            return (rect_1)
+        elif rect_1.area() > rect_2.area():
+            return (rect_1)
+        else:
+            return (rect_2)
+
+    @classmethod
+    def square(cls, size=0):
+        """ instantiate a new Rectangle instance with
+            equal sides
+            Args:
+                size (int) new height and width
+        """
+        return Rectangle(size, size)
