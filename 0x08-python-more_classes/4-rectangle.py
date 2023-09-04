@@ -82,7 +82,10 @@ class Rectangle:
             return rec_str
         rec = "#" * self.width + "\n"
         for i in range(self.height):
-            rec_str += rec
+            if i == self.height - 1:
+                rec_str += "#" * self.width
+            else:
+                rec_str += rec
         return rec_str
 
     def __repr__(self):
