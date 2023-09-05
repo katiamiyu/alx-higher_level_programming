@@ -13,7 +13,7 @@ test case: each row must be of the same length
 ----------------------------------------------------
 >>> matrix_divided([[1, 2], [1, 2, 3]], 3)
 Traceback (most recent call last):
-TypeError: each row of the matrix must have the same size
+TypeError: Each row of the matrix must have the same size
 
 test case: div must be of type integer or float
 ----------------------------------------------------
