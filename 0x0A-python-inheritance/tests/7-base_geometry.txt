@@ -1,0 +1,21 @@
+Test Module: BaseGeometry
+======================================================
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry
+
+Test case: when value is not integer
+------------------------------------------------------
+>>> bg.integer_validator("name", ade)
+Traceback (most recent call last):
+TypeError: name must be an integer
+
+Test case: when value is less than 0
+------------------------------------------------------
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+ValueError: distance must be greater than 0
+
+Test case: correct value (integer less than greater than 0)
+------------------------------------------------------
+>>> bg.integer_validator("width", 89)
+>>>
