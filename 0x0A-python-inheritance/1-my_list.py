@@ -16,5 +16,5 @@ class MyList(list):
         Arg: void
         Return: sorted list
         """
-        new_list = super().sorted(self)
+        new_list = sorted(self)
         print(new_list)
