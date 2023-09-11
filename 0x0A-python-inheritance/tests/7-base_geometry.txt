@@ -25,3 +25,15 @@ Test case: if area method call
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
+
+Test case: no args supplied
+------------------------------------------------------
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test case: 1 arg(s) supplied
+------------------------------------------------------
+>>> bg.integer_validator("name")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
