@@ -3,6 +3,7 @@
 module contains an BaseGeometry class
 """
 
+
 class BaseGeometry:
     """ this is a class
          methods:

@@ -3,24 +3,21 @@
 module contains an BaseGeometry class
 """
 
+
 class BaseGeometry:
-    """ this is a class
-         methods:
-         area
+    """
+    class
     """
 
     def area(self):
-        """ gets area of shape
-            args: void
-            Return: raise exception
+        """
+        gets area of shape
         """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """ check type and value of entry
-            Args:
-            name - string
-            value - integer
+        """
+        check type and value of entry
         """
         if type(value) != int:
             raise TypeError("{} must be an integer".format(name))
