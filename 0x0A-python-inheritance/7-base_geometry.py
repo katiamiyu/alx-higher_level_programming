@@ -8,7 +8,6 @@ class BaseGeometry:
     """
     class
     """
-
     def area(self):
         """
         gets area of shape
@@ -20,6 +19,6 @@ class BaseGeometry:
         check type and value of entry
         """
         if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
+            raise TypeError("f{name} must be an integer")
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError("f{name} must be greater than 0")
