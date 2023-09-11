@@ -5,7 +5,7 @@ class list with function print_sorted
 """
 
 
-class MyList(list):i
+class MyList(list):
     """
     class Mylist, a subclass of list
     """
