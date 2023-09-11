@@ -28,4 +28,4 @@ class Rectangle(BaseGeometry):
         '''
         string representation of class
         '''
-        return(f"[Rectangle] {self.__width}/{self.__height}")
+        return (f"[Rectangle] {self.__width}/{self.__height}")
