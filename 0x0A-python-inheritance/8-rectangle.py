@@ -10,7 +10,7 @@ class Rectangle(BaseGeometry):
         Rectangle class blueprint
     """
     def __init__(self, width, height):
-        """ 
+        """
         init doc
         """
         super().integer_validator("width", width)
