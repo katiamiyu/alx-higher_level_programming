@@ -1,11 +1,11 @@
 Test Module: BaseGeometry
 ======================================================
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry
+>>> bg = BaseGeometry()
 
 Test case: when value is not integer
 ------------------------------------------------------
->>> bg.integer_validator("name", ade)
+>>> bg.integer_validator("name", "ade")
 Traceback (most recent call last):
 TypeError: name must be an integer
 
@@ -18,10 +18,22 @@ ValueError: distance must be greater than 0
 Test case: correct value (integer less than greater than 0)
 ------------------------------------------------------
 >>> bg.integer_validator("width", 89)
->>>
+
 
 Test case: if area method call
 ------------------------------------------------------
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
+
+Test case: no args supplied
+------------------------------------------------------
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test case: 1 arg(s) supplied
+------------------------------------------------------
+>>> bg.integer_validator("name")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
