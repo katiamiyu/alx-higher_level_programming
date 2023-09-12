@@ -12,6 +12,6 @@ def write_file(filename="", text=""):
         text: string to be written
     Return: numbrr of char
     """
-    with open(filename, "w", encoding = "utf-8") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         n_of_char = f.write(text)
         return n_of_char
