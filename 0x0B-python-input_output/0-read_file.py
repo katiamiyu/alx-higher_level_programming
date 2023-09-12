@@ -9,4 +9,5 @@ def read_file(filename=""):
     reads text from filr and display on screen
     """
     with open(filename, "r", encoding="utf-8") as f:
-        print(f.read())
+        for f_line in f:
+            print(f_line, end="")

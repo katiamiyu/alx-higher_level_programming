@@ -7,7 +7,7 @@ save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 
-def add_item():
+def to_list():
     """ add json objects
         Args:
             void
@@ -26,4 +26,4 @@ def add_item():
 
 
 if __name__ == "__main__":
-    add_item()
+    to_list()
