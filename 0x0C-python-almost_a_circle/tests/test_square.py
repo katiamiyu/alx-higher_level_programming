@@ -101,15 +101,7 @@ class TestSquare(unittest.TestCase):
             content = f.read()
             self.assertEqual(content, '[{"size": 1, "x": 0, "y": 0, "id": 23}]')
 
-    def test_load_from_file(self):
-        """
-        doc test
-        """
-        Square.save_to_file([])
-        my_list = Square.load_from_file()
-        self.assertEqual(my_list, [])
-
-    def test_load_from_file2(self):
+    def test_load_from_file_one(self):
         """
         doc test
         """
@@ -118,3 +110,10 @@ class TestSquare(unittest.TestCase):
         my_list = Square.load_from_file()
         self.assertEqual(type(my_list[0]), type(Square.create(**r.to_dictionary())))
 
+    def test_load_from_file_two(self):
+        """
+        doc test
+        """
+        Square.save_to_file([])
+        my_list = Square.load_from_file()
+        self.assertEqual(my_list, [])
