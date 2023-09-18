@@ -1,76 +1,56 @@
 #!/usr/bin/python3
-"""
-defining a class Square
-"""
-
+"""module contains square class"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """
-    square class
-    """
+    """ square class"""
+
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        init functiom instance
-        """
+        """initializrs instance of square"""
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """
-        return string repr of square class
-        """
-        return (f"[{self.__class__.__name__}] ({self.id})"
+        """returns string representation of squares"""
+        return (f"[{type(self).__name__}] ({self.id})"
                 f" {self.x}/{self.y} - {self.width}")
 
     @property
     def size(self):
-        """
-        property getter width
-        """
+        """get value of size"""
         return self.width
 
     @size.setter
-    def size(self, size):
+    def size(self, value):
+        """ set value of size
+            Args:
+                value - length of sides
         """
-        property setter
-        Args:
-            size: length of each size
-        """
-        self.width = size
-        self.height = size
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
-        """
-        update attribute of a square
-        Args:
-            args: list of abitrary arguments
-            kwargs: list of keyword arguments
-        """
-        arg = ["id", "size", "x", "y"]
-        if args and len(args) > 0:
-            for i in range(len(args)):
-                setattr(self, arg[i], args[i])
+        """porpulate attr usings args and kwargs"""
+        list_of_attr = ["id", "size", "x", "y"]
+        if list_of_attr and len(args) > 0:
+            for i in args:
+                setattr(self, list_of_attr[i], args[i])
         elif kwargs:
-            for attr in kwargs:
-                setattr(self, attr, kwargs[attr])
+            for key in kwargs.keys():
+                setattr(self, key, kwargs[key])
         else:
             raise ValueError("update: positional and/or keyword arg required")
 
     def to_dictionary(self):
-        """
-        return a dict repr of a square
-        Args:
-            void
-        """
-        a = self.__dict__
-        my_dict = {}
-        for key, value in a.items():
+        """returns the dictionary rep of square"""
+        class_dict = self.__dict__
+        square_dict = {}
+        for key, value in class_dict.items():
             if len(key) > 2:
                 key = key[12:]
                 if key in ["width", "height"]:
                     key = "size"
-                my_dict[key] = value
+                square_dict[key] = value
             else:
-                my_dict[key] = value
-        return my_dict
+                square_dict[key] = value
+        return square_dict
