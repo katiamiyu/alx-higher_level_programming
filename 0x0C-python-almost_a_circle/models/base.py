@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-defining a base class
+contain a base class
 """
 import csv
 import json
@@ -14,9 +14,9 @@ class Base():
 
     def __init__(self, id=None):
         """
-        init function
+        initializing function
         Args
-            id: id of the created instance
+            id: id of created instance
         """
         if id is not None:
             self.id = id
@@ -39,7 +39,7 @@ class Base():
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        save json str repr of a list obj into file
+        saves json str repr of a list obj into file
         Args:
             cls: obj class
             list_objs: obj list
@@ -58,9 +58,9 @@ class Base():
     @staticmethod
     def from_json_string(json_string):
         """
-        retrives obj from its json str repr
+        retreives obj from json str repr
         Args:
-            json_string: json_string repr of obj
+            json_string: json string repr of obj
         """
         if json_string is None or len(json_string) == 0:
             return []
@@ -69,10 +69,10 @@ class Base():
     @classmethod
     def create(cls, **dictionary):
         """
-        create an instance of a class(obj)
+        creates instance of a class(obj)
         Args:
             cls: instance class
-            dictionary: dict repr of instance
+            dictionary: dictionary of  instance
         """
         name = cls.__name__
         if name == "Rectangle":
@@ -88,7 +88,7 @@ class Base():
     def load_from_file(cls):
         """
         return list of instances fron a file
-        obj with json repr of those instances
+        obj with json representation of those instances
         """
         instancelist = []
         name = cls.__name__
@@ -103,10 +103,10 @@ class Base():
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        '''Stores rectangle/square objs to .csv file
+        '''Stores rectangle and square objs to .csv file
 
         Args:
-           list_objs (list): A list of Square or Rectangle objects.
+           list_objs (list): A list of Square or Rectangle obj.
         '''
         name = cls.__name__
         with open(f"{name}.csv", 'w') as csv_file:
@@ -123,8 +123,9 @@ class Base():
 
     @classmethod
     def load_from_file_csv(cls):
-        '''Retrieves data from .csv file and
-        returns a list of Square or Rectangle Objects
+        '''Retrieves data from .csv file
+            returns a list of Square or 
+            Rectangle Objects
         '''
         result = []
         name = cls.__name__
