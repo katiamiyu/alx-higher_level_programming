@@ -9,6 +9,7 @@ import json
 from io import StringIO
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
     """
     doc class
@@ -81,7 +82,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_create(self):
         """
-        doc
+        doc test
         """
         r = Rectangle.create(**{"id": 13})
         self.assertEqual(r.id, 13)
@@ -94,44 +95,9 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle.create(**{"id":13, "width": 2, "height": 3, "x": 2, "y": 4})
         self.assertEqual(r.y, 4)
 
-    def test_save_to_file(self):
-        """
-        doc
-        """
-        r = Rectangle(1,2, id=13)
-        Rectangle.save_to_file(None)
-        with open("Rectangle.json") as f:
-            cont = f.read()
-            self.assertEqual(cont, '[]')
-        Rectangle.save_to_file([])
-        with open("Rectangle.json")as f:
-            content = f.read()
-            self.assertEqual(content, '[]')
-        Rectangle.save_to_file([r])
-        with open("Rectangle.json", "r") as f:
-            content = f.read()
-            self.assertEqual(content, '[{"width": 1, "height": 2, "x": 0, "y": 0, "id": 13}]')
-
-    def test_load_from_file(self):
-        """
-        doc
-        """
-        Rectangle.save_to_file([])
-        my_list = Rectangle.load_from_file()
-        self.assertEqual(my_list, [])
-
-    def test_load_from_file2(self):
-        """
-        doc
-        """
-        r = Rectangle(1, 2)
-        Rectangle.save_to_file([r])
-        my_list = Rectangle.load_from_file()
-        self.assertEqual(type(my_list[0]), type(Rectangle.create(**r.to_dictionary())))
-
     def test_display(self):
         """
-        doc
+        doc test
         """
         # run display with x,y = (0,0)
         r = Rectangle(2,3)
@@ -159,3 +125,38 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = sys.__stdout__
         expected = "##\n##\n##\n\n\n  ##\n  ##\n  ##"
         self.assertEqual(to_check, expected)
+
+    def test_save_to_file(self):
+        """
+        doc test
+        """
+        r = Rectangle(1,2, id=13)
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json") as f:
+            cont = f.read()
+            self.assertEqual(cont, '[]')
+        Rectangle.save_to_file([])
+        with open("Rectangle.json")as f:
+            content = f.read()
+            self.assertEqual(content, '[]')
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+            self.assertEqual(content, '[{"width": 1, "height": 2, "x": 0, "y": 0, "id": 13}]')
+
+    def test_load_from_file(self):
+        """
+        doc test
+        """
+        Rectangle.save_to_file([])
+        my_list = Rectangle.load_from_file()
+        self.assertEqual(my_list, [])
+
+    def test_load_from_file2(self):
+        """
+        doc test
+        """
+        r = Rectangle(1, 2)
+        Rectangle.save_to_file([r])
+        my_list = Rectangle.load_from_file()
+        self.assertEqual(type(my_list[0]), type(Rectangle.create(**r.to_dictionary())))
