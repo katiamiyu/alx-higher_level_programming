@@ -33,7 +33,7 @@ class Square(Rectangle):
         """porpulate attr usings args and kwargs"""
         list_of_attr = ["id", "size", "x", "y"]
         if list_of_attr and len(args) > 0:
-            for i in args:
+            for i in range(len(args)):
                 setattr(self, list_of_attr[i], args[i])
         elif kwargs:
             for key in kwargs.keys():
