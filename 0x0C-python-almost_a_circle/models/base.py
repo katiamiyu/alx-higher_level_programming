@@ -74,15 +74,13 @@ class Base():
             cls: instance class
             dictionary: dictionary of  instance
         """
-        name = cls.__name__
-        if name == "Rectangle":
-            rectangle = cls(5, 10)
-            rectangle.update(**dictionary)
-            return rectangle
+        obj_instance = None
+        if cls.__name__ == "Rectangle":
+            obj_instance = cls(3, 13)
         else:
-            square = cls(2)
-            square.update(**dictionary)
-            return square
+            obj_instance = cls(13)
+        obj_instance.update(**dictionary)
+        return obj_instance
 
     @classmethod
     def load_from_file(cls):
@@ -124,7 +122,7 @@ class Base():
     @classmethod
     def load_from_file_csv(cls):
         '''Retrieves data from .csv file
-            returns a list of Square or 
+            returns a list of Square or
             Rectangle Objects
         '''
         result = []
