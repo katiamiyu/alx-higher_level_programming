@@ -14,13 +14,13 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle(self):
         """test rectangle created"""
-        r1 = Rectangle(10, 2)
-        r2 = Rectangle(2, 10)
+        r1 = Rectangle(10, 2, id=90)
+        r2 = Rectangle(2, 10, id=34)
         r3 = Rectangle(10, 2, 2, 5, 12)
 
         with self.subTest("check id value"):
-            self.assertEqual(r1.id, 1)
-            self.assertEqual(r2.id, 2)
+            self.assertEqual(r1.id, 90)
+            self.assertEqual(r2.id, 34)
             self.assertEqual(r3.id, 12)
         with self.subTest("check default values"):
             self.assertEqual(r1.width, 10)

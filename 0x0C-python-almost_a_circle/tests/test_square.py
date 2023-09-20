@@ -1,119 +1,77 @@
 #!/usr/bin/python3
 """
-testing square
+contains test for Square class
 """
 
 import unittest
-import json
+import sys
+from io import StringIO
 from models.square import Square
 
+
 class TestSquare(unittest.TestCase):
-    """
-    doc class
-    """
+    """Square test class"""
+
     def test_square(self):
-        """
-        doc test
-        """
-        r1 = Square(2)
-        r2 = Square(2,4)
-        r3 = Square(2,4,6)
-        self.assertEqual(r1.size, 2)
-        self.assertEqual(r2.x, 4)
-        self.assertEqual(r3.y, 6)
+        """test square created"""
+        s1 = Square(5, id=58)
+        s2 = Square(3, 2, 3, 67)
+        with self.subTest("check id value"):
+            self.assertEqual(s1.id, 58)
+            self.assertEqual(s2.id, 67)
+        with self.subTest("check default values"):
+            self.assertEqual(s1.size, 5)
+            self.assertEqual(s2.size, 3)
+            self.assertEqual(s2.x, 2)
+            self.assertEqual(s2.y, 3)
 
     def test_square_args(self):
-        """
-        doc test
-        """
-        self.assertRaises(TypeError, Square, "1")
-        self.assertRaises(TypeError, Square, 1,"4")
-        self.assertRaises(ValueError, Square, -2,3,4)
-        self.assertEqual(Square(1,2,3,5).id, 5)
-        self.assertRaises(ValueError, Square, 0, )
-        self.assertRaises(ValueError, Square, 1, -3,4)
-        self.assertRaises(TypeError, Square, 1, 2, "3")
-        self.assertRaises(ValueError, Square, 1, 2, -6,)
+        """test values in args"""
+        self.assertRaises(TypeError, Square, "w")
+        self.assertRaises(TypeError, Square, 2, "h")
+        self.assertRaises(TypeError, Square, 2, 4, "x", 12)
+        self.assertRaises(ValueError, Square, 0)
+        self.assertRaises(ValueError, Square, 2, -1, 0, 12)
+        self.assertRaises(ValueError, Square, 2, 3, -1, 12)
 
-    def test_methods(self):
-        """
-        doc
-        """
-        r2 = Square(4, id=14)
-        self.assertEqual(r2.area(), 16)
-        self.assertEqual(r2.__str__(), "[Square] (14) 0/0 - 4")
+    def test_square_methods(self):
+        """test square methods"""
+        s1 = Square(4, id=14)
+        s2 = Square(3, 2, 2)
 
-    def test_methods_update(self):
-        """
-        doc
-        """
-        r = Square(10, id=12)
-        r.update(1)
-        self.assertNotEqual(r.id, 12)
-        r.update(1,2)
-        self.assertNotEqual(r.size, 10)
-        r.update(1,2,3)
-        self.assertNotEqual(r.x, 0)
-        r.update(1,2,3,4)
-        self.assertNotEqual(r.y, 0)
-        #passing new a dict to update
-        self.assertNotEqual(r.id, r.update(**{"id": 89}))
-        self.assertNotEqual(r.width, r.update(**{"id": 89, "size": 3}))
-        self.assertNotEqual(r.x, r.update(**{"id": 89, "width": 4, "x": 3}))
-        self.assertNotEqual(r.y, r.update(**{"id": 89, "width": 4, "x": 3, "y": 6}))
+        with self.subTest("area of square"):
+            self.assertEqual(s1.area(), 16)
 
-    def test_to_dict(self):
-        """
-        doc
-        """
-        r = Square(1, id=12)
-        self.assertEqual(r.to_dictionary(), {"id": 12, "x": 0, "y": 0, "size": 1})
+        with self.subTest("str repr of square"):
+            self.assertEqual(s1.__str__(), "[Square] (14) 0/0 - 4")
 
+        with self.subTest("dislay square using #"):
+            captured_string = StringIO()
+            sys.stdout = captured_string
+            s1.display()
+            output_value = captured_string.getvalue().strip()
+            sys.stdout = sys.__stdout__
+            exp_value = "####\n####\n####\n####"
+            self.assertEqual(output_value, exp_value)
 
-    def test_create(self):
-        """
-        doc
-        """
-        r = Square.create(**{"id": 23})
-        self.assertEqual(r.id, 23)
-        r = Square.create(**{"id": 23, "size": 2})
-        self.assertEqual(r.size, 2)
-        r = Square.create(**{"id":23, "size": 2, "x": 2})
-        self.assertEqual(r.x, 2)
-        r = Square.create(**{"id":23, "size": 2, "x": 2, "y": 4})
-        self.assertEqual(r.y, 4)
+        with self.subTest("display square along with axis"):
+            captured_str = StringIO()
+            sys.stdout = captured_str
+            s2.display()
+            output_str = captured_str.getvalue()
+            sys.stdout = sys.__stdout__
+            exp_str = "\n\n  ###\n  ###\n  ###\n"
+            self.assertEqual(exp_str, output_str)
 
-    def test_save_to_file(self):
-        """
-        doc
-        """
-        r = Square(1, id=23)
-        Square.save_to_file(None)
-        with open("Square.json") as f:
-            cont = f.read()
-            self.assertEqual(cont, '[]')
-        Square.save_to_file([])
-        with open("Square.json")as f:
-            content = f.read()
-            self.assertEqual(content, '[]')
-        Square.save_to_file([r])
-        with open("Square.json", "r") as f:
-            content = f.read()
-            self.assertEqual(content, '[{"size": 1, "x": 0, "y": 0, "id": 23}]')
+        with self.subTest("update method with args and kwargs"):
+            s1.update(size=7, x=2)
+            self.assertEqual(s1.__str__(), "[Square] (14) 2/0 - 7")
+            s1.update(y=1)
+            self.assertEqual(s1.__str__(), "[Square] (14) 2/1 - 7")
+            s1.update(y=1, size=2, x=3, id=89)
+            self.assertEqual(s1.__str__(), "[Square] (89) 3/1 - 2")
 
-    def test_load_from_file_one(self):
-        """
-        doc test
-        """
-        r = Square(2)
-        Square.save_to_file([r])
-        my_list = Square.load_from_file()
-        self.assertEqual(type(my_list[0]), type(Square.create(**r.to_dictionary())))
-
-    def test_load_from_file_two(self):
-        """
-        doc test
-        """
-        Square.save_to_file([])
-        my_list = Square.load_from_file()
-        self.assertEqual(my_list, [])
+        with self.subTest("to dictionary method"):
+            s5 = Square(10, 2, 1, 66)
+            exp_value = {'id': 66, 'x': 2, 'size': 10, 'y': 1}
+            self.assertEqual(s5.to_dictionary(), exp_value)
