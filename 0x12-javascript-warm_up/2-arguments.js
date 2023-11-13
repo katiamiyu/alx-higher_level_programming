@@ -4,7 +4,7 @@ const argvL = process.argv.length;
 let msg;
 if (argvL <= 2) {
 	msg = 'No argument';
-} else if (argvL === 3) {
+} else if (argvL < 4) {
 	msg = 'Argument found';
 } else {
 	msg = 'Arguments found';
