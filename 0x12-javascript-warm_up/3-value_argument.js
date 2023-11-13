@@ -5,6 +5,6 @@ let msg;
 if (argvL < 3) {
 	msg = 'No argument';
 } else {
-	msg = process.argv[3];
+	msg = process.argv[2];
 }
 console.log(msg);
