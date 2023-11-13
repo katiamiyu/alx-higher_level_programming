@@ -1,8 +1,7 @@
 #!/usr/bin/node
-/* makes use of args v */
 
-let msg;
 const argvL = process.argv.length;
+let msg;
 if (argvL < 3) {
 	msg = 'No argument';
 } else if (argvL === 3) {
