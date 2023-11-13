@@ -1,18 +1,17 @@
 #!/usr/bin/node
 /* makes use of args v */
-const { argv } = require('node:process');
 
-if (argv[2] === null)
+if (process.argv[2] === undefined)
 {
 	console.log('No argument');
 }
-else if (argv[3] === null)
+else if (process.argv[3] === undefined)
 {
-	console.log(argv[2]);
+	console.log(process.argv[2]);
 	console.log('Argument found');
 }
 else
 {
-	console.log(`${argv[2]} ${argv[3]}`);
+	console.log(`${process.argv[2]} ${process.argv[3]}`);
 	console.log('Arguments found');
 }
