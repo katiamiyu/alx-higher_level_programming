@@ -1,4 +1,6 @@
 #!/usr/bin/node
 
 let myMusic = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-myMusic.forEach((value)=>console.log(value));
+for (const music of myMusic) {
+  console.log(music);
+}
