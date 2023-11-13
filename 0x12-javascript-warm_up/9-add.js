@@ -2,8 +2,12 @@
 /* print argv as a square */
 
 const argv = process.argv;
+const numA = parseInt(argv[2]);
+const numB = parseInt(argv[3]);
+
 function add(a, b) {
-  return (a + b);
+  const result = (a + b);
+  console.log(result);
 }
 
-console.log(`${add(parseInt(argv[2]), parseInt(argv[3]))}`);
+add(numA, numB);
