@@ -11,5 +11,5 @@ else if (argv[3] == null)
 }
 else
 {
-	 console.log('Arguments found');
+	console.log('Arguments found');
 }
