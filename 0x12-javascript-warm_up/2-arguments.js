@@ -7,18 +7,18 @@ if (process.argv[2] === undefined)
 }
 else if (process.argv[3] === undefined)
 {
-	console.log(process.argv[2]);
+	// console.log(process.argv[2]);
 	console.log('Argument found');
 }
 else
 {
-	let myVar = process.argv[2];
+	/* let myVar = process.argv[2];
 	process.argv.forEach((value, index) => {
 		if (index >= 3)
 		{
 			myVar += ` ${value}`;
 		}
 	});
-	console.log(myVar);
+	console.log(myVar); */
 	console.log('Arguments found');
 }
