@@ -8,9 +8,11 @@ if (argv[2] === null)
 }
 else if (argv[3] === null)
 {
+	console.log(argv[2]);
 	console.log('Argument found');
 }
 else
 {
+	console.log(`${argv[2]} ${argv[3]}`);
 	console.log('Arguments found');
 }
