@@ -1,10 +1,9 @@
 #!/usr/bin/node
 
-const argvL = process.argv.length;
 let msg;
-if (argvL <= 2) {
+if (process.argv[2] === undefined) {
 	msg = 'No argument';
-} else if (argvL < 4) {
+} else if (process.argv[3] === undefined) {
 	msg = 'Argument found';
 } else {
 	msg = 'Arguments found';
