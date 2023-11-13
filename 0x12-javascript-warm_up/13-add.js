@@ -1,3 +1,6 @@
 #!/usr/bin/node
-const add = require('./13-add').add;
-console.log(add(3, 5));
+/* print argv as a square */
+
+export function add (a, b) {
+  return result = (a + b);
+}
