@@ -1,15 +1,18 @@
 #!/usr/bin/node
 /* makes use of args v */
 
-if (process.argv[2] === undefined)
+let msg;
+const argvL = process.argv.length;
+if (argvL < 3)
 {
-	console.log('No argument');
+	msg = 'No argument';
 }
-else if (process.argv[3] === undefined)
+else if (argvL === 3)
 {
-	console.log('Argument found');
+	msg = 'Argument found';
 }
 else
 {
-	console.log('Arguments found');
+	msg = 'Arguments found';
 }
+console.log(msg);
