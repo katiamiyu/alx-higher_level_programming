@@ -5,4 +5,4 @@ function logMe (item) {
   console.log(count + ': ' + item);
   count++;
 }
-module.exports = logMe;
+module.exports = { logMe };
