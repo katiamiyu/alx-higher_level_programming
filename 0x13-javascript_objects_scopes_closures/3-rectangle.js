@@ -7,9 +7,9 @@ class Rectangle {
     }
   }
   print () {
-    for (let i = 0; i < h; i++) {
+    for (let i = 0; i < this.height; i++) {
       let lineString = '';
-      for (let j = 0; j < w; j++) {
+      for (let j = 0; j < this.width; j++) {
         lineString += 'X';
       }
       console.log(lineString);
