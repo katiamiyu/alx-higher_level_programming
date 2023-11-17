@@ -17,4 +17,8 @@ if __name__ == '__main__':
         ORDER BY states.id ASC'.format(sys.argv[4])
     )
     for row in con.fetchall():
-        print(row)
+        if row[1] == sys.argv[4]:
+            print(row)
+
+    con.close()
+    db.close()
