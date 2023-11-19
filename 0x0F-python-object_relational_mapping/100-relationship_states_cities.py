@@ -7,8 +7,9 @@ module uses sqlalchemy to access database
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from relationship_city import Base, City
 from relationship_state import State
+from relationship_city import Base, City
+
 
 if __name__ == '__main__':
     engine = create_engine(
@@ -21,7 +22,6 @@ if __name__ == '__main__':
               )
              )
     Base.metadata.create_all(engine)
-    engine.connect()
     Session = sessionmaker(bind=engine)
     session = Session()
     new_city = City(name='San Francisco', state=State(name='California'))

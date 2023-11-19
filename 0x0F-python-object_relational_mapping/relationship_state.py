@@ -5,8 +5,8 @@ module uses SQLAlchemy to access database
 
 
 from sqlalchemy.orm import relationship
-from relationship_city import City, Base
 from sqlalchemy import Column, Integer, String
+from relationship_city import City, Base
 
 
 class State(Base):
@@ -19,4 +19,4 @@ class State(Base):
     id = Column(Integer, primary_key=True, nullable=False, unique=True)
     name = Column(String(128), nullable=False)
 
-    cities = relationship("City", backref="state", cascade="all, delete")
+    cities = relationship('City', backref='state', cascade='all, delete')
